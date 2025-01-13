@@ -9,7 +9,7 @@ function Login(prop){
         password : ''
     })
     
-      //Email Regex
+    //Email Regex
     let emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/
     let loginemail = emailRegex.test(login.email)
 
