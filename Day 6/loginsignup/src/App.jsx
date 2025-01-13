@@ -14,6 +14,19 @@ function App() {
 
   let [arr,setArr] = useState([])
 
+  //Username Regex
+  let userRegex =  /^[0-9A-Za-z]{6,16}$/
+  let uservalid = userRegex.test(state.username)
+
+  //Email Regex
+  let emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/
+  let emailvalid = emailRegex.test(state.email)
+
+  //Password Regex
+  let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-+.]).{6,20}$/
+  let passwordvalid = passwordRegex.test(state.password)
+
+  console.log("user",uservalid, "email",emailvalid, "password",passwordvalid)
   let toggle = ()=>{
     setSwi(!swi)
   }
@@ -24,13 +37,24 @@ function App() {
   
   let handleSubmit = (e)=>{
     e.preventDefault()
-    setArr([...arr,state])
+    if(uservalid && emailvalid && passwordvalid){
+      setArr([...arr,state])
+      success()
+    }
+    else{
+      error()
+    }
+    setState({
+      username : '',
+      email : '',
+      password : ''
+    })
   }
 
   return (
     <div className='body'>
       {swi == true 
-      ?  <Signup toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit}></Signup>
+      ?  <Signup toggle={toggle} handleChange={handleChange} handleSubmit={handleSubmit} state={state} userValid={uservalid} emailValid={emailvalid} passwordValid={passwordvalid}></Signup>
       : <Login toggle={toggle} arr={arr}></Login>
       }
     </div>
