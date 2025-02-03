@@ -24,6 +24,8 @@ function FormData(){
         });
     }
 
+    // ADD DATA
+
     let Usercollection = collection(db, 'Users')
 
     let handleChange = (e)=>{
@@ -47,6 +49,8 @@ function FormData(){
         }
     }
 
+    // GET DATA
+
     let [data, setData] = useState([])
 
     useEffect(()=>{
@@ -65,6 +69,8 @@ function FormData(){
 
         userData()
     },[])
+
+    // DELETE DATA
 
     let handleDelete = async(id)=>{
         try{
