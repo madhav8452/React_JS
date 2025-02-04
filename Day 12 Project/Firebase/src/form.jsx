@@ -85,24 +85,36 @@ function FormData(){
 
   return (
     <>
-    <div className='border border-black w-full h-screen flex'>
+    <div className='border border-black w-full h-screen bg-black flex'>
         <form action="" className='p-20 flex flex-col w-[50%] border border-black h-full' onSubmit={handleSubmit}>
-            <h1 className='text-xl font-bold'>ADD TASK</h1>
-            <label htmlFor="" className='mt-5 font-bold'>Title</label>
-            <input type="text" placeholder='Enter Title' className='border border-black w-[80%] h-[40px] rounded ps-5' value={state.title} name='title' onChange={handleChange}/>
-            <label htmlFor="" className='mt-5 font-bold'>Description</label>
-            <input type="text" placeholder='Enter Description' className='border border-black w-[80%] h-[40px] rounded ps-5' value={state.description} name='description' onChange={handleChange}/>
-            <input type="submit" className='border border-black mt-10 w-[100px] h-[40px] rounded cursor-pointer'/>
+            <h1 className='text-white text-xl font-bold'>ADD TASK</h1>
+            <label htmlFor="" className='text-white mt-5 font-bold mb-2'>Title</label>
+            <input type="text" placeholder='Enter Title' className='border border-white text-white w-[80%] h-[40px] rounded ps-5' autoComplete='off' value={state.title} name='title' onChange={handleChange}/>
+            <label htmlFor="" className='text-white mt-5 font-bold mb-2'>Description</label>
+            <input type="text" placeholder='Enter Description' className='border border-white text-white w-[80%] h-[40px] rounded ps-5' autoComplete='off' value={state.description} name='description' onChange={handleChange}/>
+            <input type="submit" className='border border-white text-white font-bold mt-10 w-[100px] h-[40px] rounded cursor-pointer hover:bg-white hover:text-black'/>
         </form>
-        <div className='border border-black w-[50%] h-full flex flex-col gap-5 p-10 overflow-auto'>
-            <p className='font-bold'>TODO LIST</p>
+        <div className='border border-black w-[50%] h-full bg-[gray] rounded-lg flex flex-col gap-5 p-10 overflow-auto'>
+            <p className='font-bold'>TASK LIST</p>
             {data.map((el)=>(
-                <div className='border-2 border-[gray] p-10 rounded' key={el.id}>
-                    <p className='text-sm'><span className='font-bold uppercase'>Title :-</span> {el.title}</p>
-                    <p className='text-sm'><span className='font-bold uppercase'>Description :-</span> {el.description}</p>
+                <div className='border-2 border-black p-5 rounded' key={el.id}>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td className='p-2 min-w-[110px] font-bold flex justify-start'>Title</td>
+                                <td className='p-2'>{el.title}</td>   
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td className='p-2 min-w-[110px] font-bold flex justify-start'>Description</td>
+                                <td className='p-2'>{el.description}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div className='mt-5'>
-                        <Link to={`/editData/${el.id}`}><button className='border border-black w-[100px] h-[40px] rounded me-5 cursor-pointer'>Edit</button></Link>
-                        <button className='border border-black w-[100px] h-[40px] rounded me-5 cursor-pointer' onClick={()=>{handleDelete(el.id)}}>Delete</button>
+                        <Link to={`/editData/${el.id}`}><button className='border border-black w-[80px] h-[30px] bg-black font-bold text-white text-xs hover:bg-transparent hover:text-black rounded cursor-pointer me-3'>Edit</button></Link>
+                        <button className='w-[80px] h-[30px] bg-[brown] text-white text-xs font-bold hover:bg-transparent hover:border hover:border-[brown] hover:text-[brown] rounded cursor-pointer me-3' onClick={()=>{handleDelete(el.id)}}>Delete</button>
                     </div>
                 </div>
             ))}
@@ -114,3 +126,4 @@ function FormData(){
 }
 
 export default FormData
+

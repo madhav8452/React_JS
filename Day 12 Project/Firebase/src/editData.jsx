@@ -25,7 +25,6 @@ function EditData(){
                     return el
                 }
             })
-            console.log(b[0])
             setState(b[0])
         }
 
@@ -50,14 +49,14 @@ function EditData(){
     }
 
   return (
-    <div className='p-20'>
-      <p className='text-xl font-bold'>Edit Task</p>
+    <div className='p-20 bg-black w-full h-screen'>
+      <p className='text-white text-xl font-bold'>Edit Task</p>
       <form action="" className='flex flex-col w-[50%] h-full' onSubmit={handleSubmit}>
-            <label htmlFor="" className='mt-5 font-bold'>Title</label>
-            <input type="text" placeholder='Enter Title' className='border border-black w-[80%] h-[40px] rounded ps-5' value={state.title} name='title' onChange={handleChange}/>
-            <label htmlFor="" className='mt-5 font-bold'>Description</label>
-            <input type="text" placeholder='Enter Description' className='border border-black w-[80%] h-[40px] rounded ps-5' value={state.description} name='description' onChange={handleChange}/>
-            <input type="submit" className='border border-black mt-10 w-[100px] h-[40px] rounded cursor-pointer'/>
+            <label htmlFor="" className='text-white mt-5 font-bold mb-2'>Title</label>
+            <input type="text" placeholder='Enter Title' className='border border-white w-[80%] h-[40px] text-white rounded ps-5' autoComplete='off' value={state.title} name='title' onChange={handleChange}/>
+            <label htmlFor="" className='text-white mt-5 font-bold mb-2'>Description</label>
+            <input type="text" placeholder='Enter Description' className='border border-white w-[80%] h-[40px] text-white rounded ps-5' autoComplete='off' value={state.description} name='description' onChange={handleChange}/>
+            <input type="submit" className='border border-white text-white font-bold hover:bg-white hover:text-black mt-10 w-[100px] h-[40px] rounded cursor-pointer'/>
         </form>
     </div>
   )
