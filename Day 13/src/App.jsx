@@ -7,10 +7,7 @@ function App() {
   let [record, setRecord] = useState([])
   let [editIndex, setEditIndex] = useState(null)
 
-  useEffect(()=>{
-    let data = JSON.parse(localStorage.getItem("user")) || []
-    setRecord(data)
-  },[])
+  // ADD DATA
 
   let handleSubmit = ()=>{
     if(editIndex == null){
@@ -31,11 +28,22 @@ function App() {
     setPassword('')
   }
 
+  // GET DATA
+
+  useEffect(()=>{
+    let data = JSON.parse(localStorage.getItem("user")) || []
+    setRecord(data)
+  },[])
+
+  // DELETE DATA
+
   let handleDelete = (id)=>{
     let data = record.filter((el)=>el.id != id)
     setRecord(data)
     localStorage.setItem("user", JSON.stringify(data))
   }
+
+  // EDIT DATA
 
   let handleEdit = (id)=>{
     let singleData = record.find((el)=>el.id == id)
